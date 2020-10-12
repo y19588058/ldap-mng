@@ -1,0 +1,23 @@
+<%= render 'header' %>
+
+<div class="fgnp-row">
+  <div class="fgnp-col fgnp-grid-12">
+    <div class="wizard fgnp-panel fgnp-margin-top-standard fgnp-margin-bottom-standard">
+      <div class="fgnp-header">
+        <h2 class="fgnp-pane-title">パスワード変更完了</h2>
+      </div>
+      <div class="fgnp-fixed-container" style="max-width:768px;">
+        <div class="fgnp-row fgnp-padding-top-standard fgnp-padding-bottom-standard">
+          <div class="fgnp-col fgnp-grid-12">
+            <h3>パスワード変更が完了しました。</h3>
+            <center>
+            <%= link_to '閉じる', '#', :class => 'fgnp-button fgnp-fixed', :onclick=>'window.open("about:blank", "_self").close()' %>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'footer' %>

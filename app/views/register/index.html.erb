@@ -1,0 +1,121 @@
+<%= render 'header' %>
+
+<div class="fgnp-row">
+  <div class="fgnp-col fgnp-grid-12">
+    <div class="wizard fgnp-panel fgnp-margin-top-standard fgnp-margin-bottom-standard">
+      <div class="fgnp-header">
+        <h2 class="fgnp-pane-title">新規ユーザー登録</h2>
+      </div>
+      <div class="fgnp-fixed-container" style="max-width:768px;">
+        <div class="fgnp-row fgnp-padding-top-standard">
+          <div class="fgnp-col fgnp-grid-12">
+            <div class="fgnp-section-header">
+              <h3>登録するユーザー情報を以下に記載し、確認ボタンを押してください。</h3>
+            </div>
+            <% if @account.errors.any? %>
+              <div style="color: #eb3e5e" role="alert">
+                <strong>入力内容にエラーがあります</strong>
+                <ul>
+                  <% @account.errors.each do |attr, msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <% if notice %><p style="color: green"><strong><%= notice %></strong></p><% end %>
+            <% if alert %><p style="color: red"><strong><%= alert %></strong></p><% end %>
+          </div>
+        </div>
+        <div class="fgnp-row">
+          <div class="fgnp-col fgnp-grid-12">
+            <%= form_for @account, :url => ldap_register_confirm_path, :html => {class: "fgnp-form fgnp-auto-width fgnp-horizontal fgnp-table-style"} do |f| %>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">ユーザーID</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.text_field :uid, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">パスワード</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.password_field :password, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">パスワード（再入力）</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.password_field :password_confirmation, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">苗字</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.text_field :sn, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">名前</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.text_field :givenName, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">メールアドレス</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.text_field :email, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">所属会社／部署</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.text_field :company, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">ユーザー権限</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <label class="fgnp-radio">
+                    <%= f.radio_button :fujitsu, "1", :class => "fgnp-select" %>
+                    <span class="fgnp-ctrl"></span> <span class="fgnp-text">富士通</span>
+                  </label><br>
+                  <label class="fgnp-radio">
+                    <%= f.radio_button :fujitsu, "0", :checked => true, :class => "fgnp-select" %>
+                    <span class="fgnp-ctrl"></span> <span class="fgnp-text">一般</span>
+                  </label>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-12">
+                  <ul class="button-area fgnp-control-group fgnp-responsive fgnp-right">
+                    <li>
+                      <%= f.submit '確認', :class => 'fgnp-button fgnp-highlight fgnp-fixed' %>
+                      <%= link_to '閉じる', '#', :class => 'fgnp-button fgnp-fixed', :onclick=>'window.open("about:blank", "_self").close();' %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'footer' %>

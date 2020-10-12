@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<html>
+  <head>
+    <title>NEXT-PF LDAPユーザ管理</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_link_tag 'css/fgnp' %>
+    <%= javascript_include_tag '/javascripts/jquery-2.2.0.min.js' %>
+    <%= javascript_include_tag 'js/fgnp' %>
+
+    <%= favicon_link_tag('/favicon.ico') %>
+
+    <style>
+      .image img {
+        text-align: center;
+        width: 100%;
+        height: auto;
+      }
+
+      .banner {
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+
+      .graphic {
+        display: block;
+        height: 100px;
+        width: 100%;
+        margin-bottom: 20px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAUElEQVQYV2NkYGAwBuKzQAwDID4IoIgxIikAMZE1oRiArBDdZBSNMIXoJiFbDZYDKcSmCOYimDuNSVKIzRNYrUYOFuQgweoZbIoxgoeoAAcAEckW11HVTfcAAAAASUVORK5CYII=) repeat;
+      }
+
+      .menus {
+        padding-top: 20px;
+      }
+
+      .footer {
+        line-height: 54px;
+      }
+
+      .fgnp-layout-no-border {
+        padding-bottom: 210px;
+      }
+
+      @media (max-width: 767px) {
+        .fgnp-layout-no-border {
+          padding-bottom: 665px;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body data-device-support="3">
+    <%= yield %>
+  </body>
+</html>

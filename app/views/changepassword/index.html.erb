@@ -1,0 +1,96 @@
+<%= render 'header' %>
+
+<div class="fgnp-row">
+  <div class="fgnp-col fgnp-grid-12">
+    <div class="wizard fgnp-panel fgnp-margin-top-standard fgnp-margin-bottom-standard">
+      <div class="fgnp-header">
+        <h2 class="fgnp-pane-title">パスワード変更</h2>
+      </div>
+      <div class="fgnp-fixed-container" style="max-width:768px;">
+        <div class="fgnp-row fgnp-padding-top-standard">
+          <div class="fgnp-col fgnp-grid-12">
+            <div class="fgnp-section-header">
+              <h3>変更するパスワードを以下に入力し、変更ボタンを押してください。</h3>
+            </div>
+            <% if notice %><p style="color: green"><strong><%= notice %></strong></p><% end %>
+            <% if @account.errors.any? %>
+              <div style="color: #eb3e5e" role="alert">
+                <strong>入力内容にエラーがあります</strong>
+                <ul>
+                  <% @account.errors.each do |attr, msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <% if @user.errors.any? %>
+              <div style="color: #eb3e5e" role="alert">
+                <strong>パスワード変更に失敗しました</strong>
+                <ul>
+                  <% @user.errors.each do |attr, msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <% if flash[:alert] %>
+              <div style="color: #eb3e5e" role="alert">
+                 <strong><%= flash[:alert] %></strong>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="fgnp-row">
+          <div class="fgnp-col fgnp-grid-12">
+            <%= form_for @account, :url => ldap_changepassword_thanks_path, :html => {class: "fgnp-form fgnp-auto-width fgnp-horizontal fgnp-table-style"} do |f| %>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">ユーザーID</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.text_field :uid, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">変更前パスワード</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.password_field :password_old, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">変更後パスワード</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.password_field :password, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">変更後パスワード（再入力）</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.password_field :password_confirmation, :class => 'fgnp-input' %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-12">
+                  <ul class="button-area fgnp-control-group fgnp-responsive fgnp-right">
+                    <li>
+                      <%= f.submit '変更', :class => 'fgnp-button fgnp-highlight fgnp-fixed' %>
+                      <%= link_to '閉じる', '#', :class => 'fgnp-button fgnp-fixed', :onclick=>'window.open("about:blank", "_self").close();' %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'footer' %>

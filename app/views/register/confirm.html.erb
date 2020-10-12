@@ -1,0 +1,102 @@
+<%= render 'header' %>
+
+<div class="fgnp-row">
+  <div class="fgnp-col fgnp-grid-12">
+    <div class="wizard fgnp-panel fgnp-margin-top-standard fgnp-margin-bottom-standard">
+      <div class="fgnp-header">
+        <h2 class="fgnp-pane-title">新規ユーザー登録（確認）</h2>
+      </div>
+      <div class="fgnp-fixed-container" style="max-width:768px;">
+        <div class="fgnp-row fgnp-padding-top-standard">
+          <div class="fgnp-col fgnp-grid-12">
+            <div class="fgnp-section-header">
+              <h3>登録するユーザー情報にお間違いがないか確認し、登録ボタンを押してください。</h3>
+            </div>
+          </div>
+        </div>
+        <div class="fgnp-row">
+          <div class="fgnp-col fgnp-grid-12">
+            <%= form_for @account, :url => ldap_register_thanks_path, :html => {class: "fgnp-form fgnp-auto-width fgnp-horizontal fgnp-table-style"} do |f| %>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">ユーザーID</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.hidden_field :uid %>
+                  <%= @account.uid %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">パスワード</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.hidden_field :password %>
+                  <%= f.hidden_field :password_confirmation %>
+                  (非表示)
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">苗字</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.hidden_field :sn %>
+                  <%= @account.sn %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">名前</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.hidden_field :givenName %>
+                  <%= @account.givenName %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">メールアドレス</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.hidden_field :email %>
+                  <%= @account.email %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">所属会社／部署</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.hidden_field :company %>
+                  <%= @account.company %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-03 fgnp-form-title">
+                  <label class="fgnp-form-label fgnp-required">ユーザー権限</label>
+                </div>
+                <div class="fgnp-col fgnp-grid-09">
+                  <%= f.hidden_field :fujitsu %>
+                  <%= @account.fujitsu == '1' ? '富士通' : '一般'  %>
+                </div>
+              </div>
+              <div class="fgnp-row">
+                <div class="fgnp-col fgnp-grid-12">
+                  <ul class="button-area fgnp-control-group fgnp-responsive fgnp-right">
+                    <li>
+                      <%= f.submit '登録', :class => 'fgnp-button fgnp-highlight fgnp-fixed' %>
+                      <%= link_to '戻る', '#', :class => 'fgnp-button fgnp-fixed', :onclick=>'history.back();' %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'footer' %>

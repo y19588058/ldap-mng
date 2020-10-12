@@ -1,0 +1,73 @@
+<%= render 'header' %>
+
+<div class="fgnp-row">
+<div class="fgnp-col fgnp-grid-12">
+
+<div class="fgnp-panel fgnp-margin-top-standard fgnp-margin-bottom-standard">
+  <div class="fgnp-header">
+    <h3 class="fgnp-pane-title">登録済みユーザー</h3>
+    <!--
+    <ul class="fgnp-control-group fgnp-right">
+      <li><%= link_to '新規登録', ldap_register_path, :class => ["fgnp-button fgnp-fixed"] %></li>
+      <li><%= link_to '閉じる', '#', :class => 'fgnp-button fgnp-fixed', :onclick=>'window.open("about:blank", "_self").close()' %></li>
+    </ul>
+    -->
+  </div>
+  <div class="fgnp-scrollable">
+    <div class="fgnp-row fgnp-margin-top-standard">
+      <div class="fgnp-col fgnp-grid-12">
+        <% if notice %><p style="color: green"><strong><%= notice %></strong></p><% end %>
+        <% if alert %><p style="color: red"><strong><%= alert %></strong></p><% end %>
+        <div class="fgnp-data-table-wrap">
+        <table class="fgnp-data-table fgnp-sortable">
+          <thead>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text">ユーザーID</span></th>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text">苗字</span></th>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text">名前</span></th>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text">メールアドレス</span></th>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text">パスワード</span></th>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text">所属</span></th>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text">ユーザー権限</span></th>
+            <th data-sort="string" class="fgnp-sortable"><span class="fgnp-text"></span></th>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.uid %></td>
+                <td><%= user.sn %></td>
+                <td><%= user.givenName %></td>
+                <td><%= user.mail %></td>
+                <td><%= user.userPassword %></td>
+                <td><%= user.description %></td>
+                <td><%= user.employeeType == '1' ? '富士通' : '一般' %></td>
+                <td>
+                  <% @request_url = "#{ldap_users_path}?uid=#{user.uid}" %>
+                  <a class="fgnp-button" onclick="$.fgnpConfirm({
+                        message: '本当に削除してもよろしいですか？',
+                        confirm: function () {
+                          $.ajax({
+                            type: 'DELETE',
+                            url: '<%= @request_url %>',
+                            success: function(){
+                              window.location.href = '<%= ldap_users_path %>';
+                            }
+                          });
+                        }
+                     });">削除
+                  </a>
+                </td>
+                <!--<td><%= button_to '削除', "#{ldap_users_path}?uid=#{user.uid}", method: :delete, class: "fgnp-button" %></td>-->
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<%= render 'footer' %>

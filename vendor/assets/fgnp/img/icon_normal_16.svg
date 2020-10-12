@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="normal" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<circle fill="#38891B" cx="8" cy="8" r="7.9"/>
+<circle fill="#4AAC14" cx="8" cy="8" r="7"/>
+<polygon fill="#FFFFFF" points="13.57,6.461 11.955,4.845 7.032,9.768 4.085,6.821 2.469,8.438 7.031,13 "/>
+</svg>

@@ -1,0 +1,20 @@
+development:
+  host: 127.0.0.1
+  port: 389
+  base: dc=fujitsu,dc=com
+  bind_dn: cn=admin,dc=fujitsu,dc=com
+  password: admin_password
+
+test:
+  host: 127.0.0.1
+  port: 389
+  base: dc=fujitsu,dc=com
+  bind_dn: cn=admin,dc=fujitsu,dc=com
+  password: admin_password
+
+production:
+  host: 127.0.0.1
+  port: 389
+  base: dc=fujitsu,dc=com
+  bind_dn: cn=admin,dc=fujitsu,dc=com
+  password: admin_password
